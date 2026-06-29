@@ -2,7 +2,7 @@
 
 > 经验如何升级成 Skill，并塑造 Agent 的工作风格。
 
-上一篇我们讲了如何用 Hook 给 Coding Agent 外挂一套 memory runtime。
+上一篇我们讲了如何用 Hook 给 Coding Agent 外挂一套 Memory Runtime。
 
 到这一步，Agent 已经能做到：
 
@@ -38,6 +38,8 @@ Episode → Fact → Rule → Skill → Style
 也不是 project_memory.md。
 
 而是可复用技能，以及稳定的工程行为风格。
+
+---
 
 ## 一、如果只会记笔记，Agent 仍然像新人
 
@@ -79,6 +81,8 @@ generated API files 不要直接手改。
 对应到 Agent，就是 skill、workflow、hook、command、subagent playbook。
 
 > 只会记笔记的 Agent，是知识库。会把经验变成流程的 Agent，才是工程搭档。
+
+---
 
 ## 二、经验升级链：Episode → Fact → Rule → Skill → Automation
 
@@ -164,6 +168,8 @@ payment-test-setup.skill
 
 > 记忆的最高价值，是把重复推理变成稳定动作。
 
+---
+
 ## 三、什么经验值得升级成 Skill？
 
 不是所有经验都应该升级。
@@ -203,7 +209,13 @@ payment-test-setup.skill
 - 依赖单次上下文的判断；
 - 用户临时偏好。
 
+这就是为什么 Skill Promotion 需要严格门槛。
+
+没有门槛，skill library 很快会变成另一个垃圾场。
+
 > Skill 不是记忆越多越好，而是流程越稳定越值得固化。
+
+---
 
 ## 四、错误经验也可能被升级成坏技能
 
@@ -252,7 +264,47 @@ superseded
 
 > 让错误经验变成技能，比忘记经验更危险。
 
-## 五、Dream / Distill / Curator 的分工
+---
+
+## 五、失败路径也应该被记住
+
+很多 memory 系统只记录成功经验。
+
+但工程里，失败路径同样重要。
+
+一个资深工程师厉害，不只是知道该怎么做，还知道：
+
+- 哪些方案看起来合理但会失败；
+- 哪些 shortcut 会埋坑；
+- 哪些 workaround 只能治标；
+- 哪些改动会引发连锁问题。
+
+这类记忆可以叫 negative memory 或 anti-pattern memory。
+
+例如：
+
+```text
+不要在 Stripe webhook 中先 JSON.parse body，否则 signature verification 会失败。
+不要直接改 generated types，要改 schema 后重新生成。
+不要为了修测试硬编码 timeout，这会掩盖 race condition。
+不要只修 mock，不修真实 integration path。
+```
+
+这些不是普通事实。
+
+它们是“不要再走的路”。
+
+对 Coding Agent 来说非常有价值。
+
+因为 Agent 很容易重复尝试看似合理但实际失败的方案。
+
+如果失败路径没有被记录，它就会一次次重新探索。
+
+> 经验不只是知道该做什么，也包括知道哪些路不要再走。
+
+---
+
+## 六、Dream / Distill / Curator 的分工
 
 要让经验持续升级，需要三个后台角色。
 
@@ -311,7 +363,9 @@ Curator：清理坏记忆和旧技能
 
 > 没有 Curator 的 Skill Library，迟早会变成新的垃圾堆。
 
-## 六、Agent 的工作风格，是被长期记忆塑造出来的
+---
+
+## 七、Agent 的工作风格，是被长期记忆塑造出来的
 
 记忆不仅影响 Agent 知道什么。
 
@@ -364,17 +418,34 @@ Curator：清理坏记忆和旧技能
 
 所以，Agent 的“性格”不一定来自模型本身。
 
-它也可能来自长期规则、长期记忆、失败复盘、用户纠错、奖励信号、verifier、skill library、团队规范。
+它也可能来自：
+
+- 长期规则；
+- 长期记忆；
+- 失败复盘；
+- 用户纠错；
+- 奖励信号；
+- verifier；
+- skill library；
+- 团队规范。
 
 > 你给 Agent 什么记忆，它就会变成什么样的工程师。
 
-## 七、四种 Agent 工作风格设计
+---
+
+## 八、四种 Agent 工作风格设计
 
 既然 memory 会塑造行为风格，就可以主动设计。
 
 ### 1. 严谨型 Agent
 
-适合金融、医疗、生产系统、基础设施、大型企业项目。
+适合：
+
+- 金融；
+- 医疗；
+- 生产系统；
+- 基础设施；
+- 大型企业项目。
 
 记忆强化：
 
@@ -394,7 +465,12 @@ Read → Plan → Test → Implement → Verify → Review
 
 ### 2. 探索型 Agent
 
-适合原型、Hackathon、创业项目、早期产品验证。
+适合：
+
+- 原型；
+- Hackathon；
+- 创业项目；
+- 早期产品验证。
 
 记忆强化：
 
@@ -414,7 +490,12 @@ Prototype → Run → Learn → Iterate
 
 ### 3. 安全型 Agent
 
-适合权限系统、支付系统、用户数据、安全敏感业务。
+适合：
+
+- 权限系统；
+- 支付系统；
+- 用户数据；
+- 安全敏感业务。
 
 记忆强化：
 
@@ -433,7 +514,12 @@ Threat Model → Change → Test → Audit
 
 ### 4. 架构型 Agent
 
-适合大重构、多模块系统、平台工程、长期项目。
+适合：
+
+- 大重构；
+- 多模块系统；
+- 平台工程；
+- 长期项目。
 
 记忆强化：
 
@@ -455,7 +541,9 @@ Context → Boundary → Design → Implement → Document
 
 它也是 Agent 行为设计。
 
-## 八、从个人 Agent 走向团队 Agent
+---
+
+## 九、从个人 Agent 走向团队 Agent
 
 到这里，第一系列的主线已经完成：
 
@@ -483,11 +571,17 @@ Context → Boundary → Design → Implement → Document
 
 > 给 Agent 团队装一个共享大脑。
 
-## 结语
+---
 
-这个系列真正想说的不是：Agent 要不要有 memory。
+## 结语：真正强的 Agent，不是会写更多代码
 
-而是：Agent 需要什么样的 memory。
+这个系列真正想说的不是：
+
+> Agent 要不要有 memory？
+
+而是：
+
+> Agent 需要什么样的 memory？
 
 如果 memory 只是存储，它就是资料库。
 
@@ -495,7 +589,19 @@ Context → Boundary → Design → Implement → Document
 
 如果 memory 只是向量库，它就是搜索系统。
 
-但如果 memory 能筛选、加权、记录、召回、巩固、遗忘、升级、技能化、塑造行为风格，它才是经验系统。
+但如果 memory 能：
+
+- 筛选；
+- 加权；
+- 记录；
+- 召回；
+- 巩固；
+- 遗忘；
+- 升级；
+- 技能化；
+- 塑造行为风格；
+
+它才是经验系统。
 
 而经验系统，才是 Coding Agent 从“会执行任务”走向“会成长”的关键。
 
