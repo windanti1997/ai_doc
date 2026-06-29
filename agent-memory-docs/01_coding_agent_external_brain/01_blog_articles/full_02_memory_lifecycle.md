@@ -2,31 +2,47 @@
 
 > Coding Agent 需要的不是更长上下文，而是记忆生命周期。
 
-你有没有遇到过这种情况：
+上一篇我们讲了一个核心判断：
 
-你已经告诉过 Agent：这个项目用 pnpm，不要用 npm。
+> Agent Memory 不是 RAG，也不是向量库，而是一套让经历影响未来行动的经验系统。
 
-你已经纠正过它：generated 文件不要直接改，要改 schema 后重新生成。
+那问题来了：
 
-你已经让它跑过测试：integration test 要先启动 Redis。
+如果把这个判断落到 Coding Agent 上，一个真正有记忆的 Agent 应该长什么样？
 
-你甚至已经在上一轮对话里解释过这个模块的历史坑点。
+很多人现在用 Coding Agent，会有一种很强的割裂感。
 
-但下一次任务开始，它还是像第一次见这个项目。
+它在单轮任务里越来越强。
 
-这不是单个工具的问题。
+能读代码，能改文件，能跑测试，能分析报错。
 
-这是现在很多 Coding Agent 的共同问题：
+但一旦换个 session，或者任务变长，它又像第一次见这个项目。
 
-> 它有上下文，但没有真正的经验。
+你已经告诉过它：
 
-很多人会说，那就给它加 RAG，把历史记录和项目文档都检索出来。
+- 这个项目用 pnpm，不要用 npm；
+- integration test 要先启动 Redis；
+- generated 文件不要直接改；
+- backend 改接口后要同步更新前端类型；
+- 这个模块之前踩过 webhook signature 的坑。
 
-这能缓解一部分问题，但仍然不够。
+但下次它可能还是忘。
 
-因为 Coding Agent 缺的不是一个“能搜索历史的资料库”，而是一套能让经验持续生效的 memory lifecycle。
+于是很多人说：给它加 RAG。
 
-## 一、为什么 RAG 不等于 Agent Memory？
+把聊天记录存起来，把项目文档存起来，把历史摘要塞进向量库。
+
+这当然能缓解问题。
+
+但它仍然不够。
+
+因为 Coding Agent 缺的不是一个“能搜索历史的资料库”。
+
+它缺的是一套能让经验持续生效的 memory lifecycle。
+
+---
+
+## 一、RAG 不等于 Agent Memory
 
 RAG 解决的是：
 
@@ -44,13 +60,25 @@ Agent Memory 解决的是：
 
 RAG 更适合静态知识问答。
 
-比如某个 API 怎么用，某个文档里写了什么，某个历史记录里有没有提过某件事。
+比如：
+
+- 某个 API 怎么用；
+- 某个文档里写了什么；
+- 某个历史记录里有没有提过某件事。
 
 但 Coding Agent 面对的是动态工程环境。
 
-代码会变，测试会变，依赖会变，架构会重构，过去正确的经验未来可能过期。
+代码会变。
 
-所以 Coding Agent 的记忆不能只问“能不能检索出来”。
+测试会变。
+
+依赖会变。
+
+架构会重构。
+
+过去正确的经验，未来可能过期。
+
+所以，Coding Agent 的记忆不能只问“能不能检索出来”。
 
 它还必须问：
 
@@ -66,11 +94,13 @@ RAG 更适合静态知识问答。
 
 > RAG 是查资料。Agent Memory 是长经验。
 
+---
+
 ## 二、长上下文也不是完整记忆
 
 还有一种常见想法是：只要上下文足够长，Agent 就不会失忆。
 
-这也不完全对。
+这个判断也不完全对。
 
 长上下文能让 Agent “看到更多”。
 
@@ -93,6 +123,8 @@ RAG 更适合静态知识问答。
 
 真正有效的记忆，应该是经过筛选、压缩、验证和组织的。
 
+也就是说：
+
 ```text
 原始历史 ≠ 记忆
 长上下文 ≠ 经验
@@ -103,7 +135,9 @@ RAG 更适合静态知识问答。
 
 而是“把正确的东西，在正确的时机，用正确的方式召回”。
 
-## 三、Coding Agent 需要四层记忆
+---
+
+## 三、Coding Agent 至少需要四层记忆
 
 如果参考人类记忆，一个 Coding Agent 至少需要四层：
 
@@ -114,9 +148,22 @@ Semantic Memory
 Procedural Memory
 ```
 
-它们分别解决不同问题。
+这四层分别回答四个问题：
 
-## 四、Working Memory：当前任务状态
+```text
+我现在在做什么？
+过去发生过什么？
+我从过去抽象出了什么稳定知识？
+我已经学会了哪些可复用流程？
+```
+
+它们不能混成一份大文档。
+
+因为它们的生命周期完全不同。
+
+---
+
+## 四、Working Memory：当前任务不断线
 
 Working Memory 负责当前正在做什么。
 
@@ -151,7 +198,7 @@ Working Memory 负责当前正在做什么。
 
 > 保持当前任务不断线。
 
-对应工程实现：
+对应工程实现可以是：
 
 ```text
 current_goal.md
@@ -161,7 +208,9 @@ checkpoint.md
 recent_tool_results
 ```
 
-## 五、Episodic Memory：过去发生过什么
+---
+
+## 五、Episodic Memory：记录真实经历
 
 Episodic Memory 负责记录具体经历。
 
@@ -198,7 +247,11 @@ Episodic Memory 是原材料。
 
 这就是为什么它会重复踩坑。
 
-## 六、Semantic Memory：抽象出的项目知识
+> 情景记忆记录发生过什么，语义记忆才总结它意味着什么。
+
+---
+
+## 六、Semantic Memory：沉淀项目知识
 
 Semantic Memory 负责把多次经历压缩成稳定知识。
 
@@ -226,7 +279,9 @@ generated API files 不要直接手改。
 
 这类记忆应该比 episodic memory 更短、更稳定、更高价值。
 
-但它必须有 metadata：
+但它不能只是 markdown 里的几句话。
+
+它必须有 metadata：
 
 ```text
 scope
@@ -242,7 +297,9 @@ Semantic Memory 的目标是：
 
 > 让 Agent 不用每次都从日志中重新总结项目经验。
 
-## 七、Procedural Memory：可复用技能
+---
+
+## 七、Procedural Memory：把经验变成可复用技能
 
 Procedural Memory 是最容易被忽略的一层。
 
@@ -299,6 +356,8 @@ Procedural Memory 的价值在于：
 
 它应该把高频成功流程升级成 skill。
 
+---
+
 ## 八、四层记忆之外，还需要五个治理机制
 
 光有四层还不够。
@@ -316,6 +375,10 @@ Consolidate
 Forget
 Promote
 ```
+
+这五个机制，决定 memory 能不能长期可用。
+
+---
 
 ## 九、Write：什么值得写入？
 
@@ -339,6 +402,8 @@ Write 的关键不是存储能力，而是准入判断。
 
 > 记忆的第一步不是写入，而是选择。
 
+---
+
 ## 十、Retrieve：什么时候召回？
 
 记忆不能全量注入。
@@ -347,7 +412,16 @@ Write 的关键不是存储能力，而是准入判断。
 
 Agent 应该按线索召回。
 
-线索包括：用户目标、当前文件、模块路径、错误栈、测试名称、最近 diff、git branch、任务类型。
+线索包括：
+
+- 用户目标；
+- 当前文件；
+- 模块路径；
+- 错误栈；
+- 测试名称；
+- 最近 diff；
+- git branch；
+- 任务类型。
 
 比如用户说：
 
@@ -365,6 +439,8 @@ integration test 依赖服务
 而不是召回整个项目历史。
 
 > 好的召回，不是最相似，而是当前最有用。
+
+---
 
 ## 十一、Consolidate：如何巩固？
 
@@ -391,9 +467,18 @@ Consolidate 可以在任务结束时做，也可以定期做。
 
 它对应人类记忆里的“睡眠整理”。
 
-对 Agent 来说，就是合并重复事件、删除临时猜测、提炼稳定事实、更新 project memory、生成 known pitfalls、标记可能过期的内容。
+对 Agent 来说，就是：
+
+- 合并重复事件；
+- 删除临时猜测；
+- 提炼稳定事实；
+- 更新 project memory；
+- 生成 known pitfalls；
+- 标记可能过期的内容。
 
 > 没有巩固，memory 只是日志堆。
+
+---
 
 ## 十二、Forget：如何遗忘？
 
@@ -403,7 +488,14 @@ Coding Agent 特别需要遗忘，因为代码一直变。
 
 遗忘不一定是删除。
 
-可以是降权、归档、标记 stale、等待重新验证、被新规则覆盖、限制只在历史查询时出现。
+可以是：
+
+- 降权；
+- 归档；
+- 标记 stale；
+- 等待重新验证；
+- 被新规则覆盖；
+- 限制只在历史查询时出现。
 
 每条长期记忆都应该有：
 
@@ -426,6 +518,8 @@ superseded_by
 ```
 
 > 长期记忆如果没有失效机制，迟早会变成长期污染。
+
+---
 
 ## 十三、Promote：如何升级成技能？
 
@@ -465,7 +559,33 @@ Automation
 
 > Agent Memory 的终点不是长期笔记，而是可复用技能。
 
-## 十四、结语：为什么你的 Agent 总像第一次见这个项目？
+---
+
+## 十四、最终公式
+
+一个会成长的 Coding Agent，记忆系统可以写成一个公式：
+
+```text
+Agent Memory
+= Working + Episodic + Semantic + Procedural
++ Write / Retrieve / Consolidate / Forget / Promote
+```
+
+但这还不完整。
+
+如果要进入团队场景，它还需要：
+
+```text
+Scope + Evidence + Permission + Governance
+```
+
+这会在第二系列展开。
+
+本篇先解决单 Agent 的基本模型。
+
+---
+
+## 结语：为什么你的 Agent 总像第一次见这个项目？
 
 因为它可能有上下文，但没有经验。
 
@@ -489,3 +609,7 @@ Automation
 - 下一次应该怎么做得更好。
 
 这就是 Agent Memory 和 RAG 的真正差别。
+
+下一篇，我们用这套框架回头看主流 Coding Agent：
+
+> Codex、Claude Code、OpenCode、Hermes、MiMo，谁真正开始长经验？
