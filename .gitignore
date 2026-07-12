@@ -1,0 +1,14 @@
+node_modules/
+dist/
+/coverage/
+.aeb/
+.agents/
+.codex/
+.agent-delegation/
+.mimocode/
+.opencode/
+.trae/
+.claude/
+.cursor/
+.codebuddy/
+.trellis/
