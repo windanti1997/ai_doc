@@ -1,0 +1,1210 @@
+<section style="max-width:677px;margin:0 auto;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:#374151;line-height:1.75;letter-spacing:0.5px;overflow-x:hidden;">
+
+<!-- 封面 -->
+<section style="margin:0 0 32px;background:#fff;border:1.5px solid rgba(5,150,105,0.15);border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);width:100%;">
+  <section style="padding:32px 28px 28px;">
+    <section style="display:flex;align-items:center;gap:8px;margin-bottom:28px;">
+      <span style="width:6px;height:6px;background:#059669;border-radius:50%;"><span leaf=""><br></span></span>
+      <span style="font-size:11px;font-weight:700;letter-spacing:3px;color:#059669;"><span leaf="">TRELLIS · 实战进阶</span></span>
+      <section style="flex:1;height:1px;overflow:hidden;background:linear-gradient(to right,rgba(5,150,105,0.12),transparent);"><span leaf=""><br></span></section>
+      <span style="font-size:10px;color:#D1D5DB;font-weight:600;"><span leaf="">2026.07</span></span>
+    </section>
+    <section>
+      <p style="font-size:15px;color:#D1D5DB;margin:0 0 6px;text-decoration:line-through;letter-spacing:0.5px;">
+        <span leaf="">默认 workflow 够用吗？</span>
+      </p>
+      <p style="font-size:24px;font-weight:900;color:#111827;margin:0;line-height:1.05;letter-spacing:-2px;">
+        <span leaf="">大项目用 Trellis 默认配置就是找虐</span>
+      </p>
+      <p style="font-size:24px;font-weight:900;color:#059669;margin:0 0 16px;line-height:1.05;letter-spacing:-2px;">
+        <span leaf="">我用 trellis-meta 定制了专属工作流</span>
+      </p>
+      <section style="width:48px;height:3px;background:linear-gradient(to right,#059669,#34D399);border-radius:2px;margin-bottom:12px;">
+        <span leaf=""><br></span>
+      </section>
+      <p style="font-size:13px;color:#9CA3AF;margin:0;line-height:1.7;letter-spacing:0.5px;">
+        <span leaf="">五层防御 · 第一性原理 · 苏格拉底提问 · 完整薄片 · 三场景动态路由</span>
+      </p>
+    </section>
+  </section>
+  <section style="background:linear-gradient(135deg,#059669,#10B981);padding:12px 28px;display:flex;align-items:center;justify-content:space-between;">
+    <p style="font-size:12px;color:rgba(255,255,255,0.9);margin:0;font-weight:600;letter-spacing:0.5px;">
+      <span leaf="">AI 协作开发 · 工作流定制</span>
+    </p>
+    <section style="display:flex;gap:4px;">
+      <span style="background:rgba(255,255,255,0.2);padding:1px 6px;border-radius:3px;font-size:8px;color:#fff;font-weight:600;"><span leaf="">实战</span></span>
+      <span style="background:rgba(255,255,255,0.2);padding:1px 6px;border-radius:3px;font-size:8px;color:#fff;font-weight:600;"><span leaf="">方法论</span></span>
+    </section>
+  </section>
+</section>
+
+<!-- 引言段 -->
+<section style="padding:0 20px;margin-bottom:24px;">
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">上个月做一个用户邀请系统，前后拆了十几个任务，我让 AI 用 Trellis 默认流程跑。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">结果呢？</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">第一个任务写完了，发现接口字段名跟第二个任务对不上。第二个任务做了一半，发现第一个任务的实现有问题，得回去改。改完第一个，第二个又得跟着改。改到第五天，我发现 AI 偷偷加了三个不在需求里的功能——它觉得"用户可能会需要"。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">最气人的是，整个项目做完，核心功能是有了，但跟我最开始想要的东西已经不是一个东西了。AI 把它简化成了一个"能用但不好用"的 MVP。</span>
+  </p>
+  <section style="background:#FFF;border:1px dashed #BBF7D0;border-radius:8px;padding:14px 16px;margin-bottom:24px;text-align:center;">
+    <p style="margin:0;line-height:1.6;">
+      <span style="font-size:15px;color:#059669;font-weight:bold;border-bottom:3px solid #FDE68A;padding-bottom:2px;"><span leaf="">不是 Trellis 不好用，是我用错了</span></span>
+    </p>
+  </section>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">默认 workflow 是给小任务设计的——brainstorm 一下，implement，check，搞定。但大项目不能这么玩。大项目需要路线锁定、需要任务契约、需要并行执行、需要反 MVP 化。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">Trellis 不是只有默认配置。它有个隐藏技能叫 </span><span style="background:#F3F4F6;color:#059669;padding:2px 6px;border-radius:4px;font-size:13px;font-weight:600;"><span leaf="">trellis-meta</span></span><span leaf="">，专门用来定制工作流。一个 markdown 文件，改几行，整个工作流就变了。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">这篇文章分享我给大需求长期任务定制的完整 workflow，顺带提一下 bugfix 和性能优化的变体。全部基于 Trellis 官方能力，不用改源码，只改 </span><span style="background:#F3F4F6;color:#059669;padding:2px 6px;border-radius:4px;font-size:13px;font-weight:600;"><span leaf="">workflow.md</span></span><span leaf=""> 一个文件。</span>
+  </p>
+</section>
+
+<!-- 目录 -->
+<section style="margin:0 20px 32px;">
+  <section style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+    <p style="font-size:10px;color:#9CA3AF;margin:0;text-transform:uppercase;letter-spacing:2px;font-weight:600;">
+      <span leaf="">📦 5 Parts + Conclusion</span>
+    </p>
+    <p style="font-size:10px;color:#9CA3AF;margin:0;">
+      <span leaf="">👉 滑动</span>
+    </p>
+  </section>
+  <section style="overflow-x:scroll;-webkit-overflow-scrolling:touch;white-space:nowrap;padding-bottom:8px;">
+    <!-- PART 01 高亮 -->
+    <section style="display:inline-block;white-space:normal;vertical-align:top;width:110px;background:linear-gradient(135deg,#059669,#10B981);border-radius:12px;padding:12px;margin-right:8px;">
+      <p style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:1px;margin:0 0 5px;">
+        <span leaf="">PART 01</span>
+      </p>
+      <p style="font-size:13px;font-weight:800;color:#fff;margin:0 0 3px;">
+        <span leaf="">trellis-meta</span>
+      </p>
+      <p style="font-size:10px;color:rgba(255,255,255,0.7);margin:0;">
+        <span leaf="">定制入口在哪</span>
+      </p>
+    </section>
+    <!-- PART 02 -->
+    <section style="display:inline-block;white-space:normal;vertical-align:top;width:110px;background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:12px;margin-right:8px;box-shadow:0 2px 6px rgba(0,0,0,0.04);">
+      <p style="font-size:9px;font-weight:700;color:#9CA3AF;letter-spacing:1px;margin:0 0 5px;">
+        <span leaf="">PART 02</span>
+      </p>
+      <p style="font-size:13px;font-weight:800;color:#111827;margin:0 0 3px;">
+        <span leaf="">五层防御</span>
+      </p>
+      <p style="font-size:10px;color:#9CA3AF;margin:0;">
+        <span leaf="">大任务不翻车</span>
+      </p>
+    </section>
+    <!-- PART 03 -->
+    <section style="display:inline-block;white-space:normal;vertical-align:top;width:110px;background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:12px;margin-right:8px;box-shadow:0 2px 6px rgba(0,0,0,0.04);">
+      <p style="font-size:9px;font-weight:700;color:#9CA3AF;letter-spacing:1px;margin:0 0 5px;">
+        <span leaf="">PART 03</span>
+      </p>
+      <p style="font-size:13px;font-weight:800;color:#111827;margin:0 0 3px;">
+        <span leaf="">并行执行</span>
+      </p>
+      <p style="font-size:10px;color:#9CA3AF;margin:0;">
+        <span leaf="">worktree 三批次</span>
+      </p>
+    </section>
+    <!-- PART 04 -->
+    <section style="display:inline-block;white-space:normal;vertical-align:top;width:110px;background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:12px;margin-right:8px;box-shadow:0 2px 6px rgba(0,0,0,0.04);">
+      <p style="font-size:9px;font-weight:700;color:#9CA3AF;letter-spacing:1px;margin:0 0 5px;">
+        <span leaf="">PART 04</span>
+      </p>
+      <p style="font-size:13px;font-weight:800;color:#111827;margin:0 0 3px;">
+        <span leaf="">另外两场景</span>
+      </p>
+      <p style="font-size:10px;color:#9CA3AF;margin:0;">
+        <span leaf="">Bugfix + 性能</span>
+      </p>
+    </section>
+    <!-- PART 05 -->
+    <section style="display:inline-block;white-space:normal;vertical-align:top;width:110px;background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:12px;box-shadow:0 2px 6px rgba(0,0,0,0.04);">
+      <p style="font-size:9px;font-weight:700;color:#9CA3AF;letter-spacing:1px;margin:0 0 5px;">
+        <span leaf="">PART 05</span>
+      </p>
+      <p style="font-size:13px;font-weight:800;color:#111827;margin:0 0 3px;">
+        <span leaf="">三步上手</span>
+      </p>
+      <p style="font-size:10px;color:#9CA3AF;margin:0;">
+        <span leaf="">从零开始改</span>
+      </p>
+    </section>
+  </section>
+</section>
+
+<!-- ========================================== -->
+<!-- PART 01：trellis-meta 是什么 -->
+<!-- ========================================== -->
+<section style="margin-top:16px;margin-bottom:32px;padding:0 20px;">
+  <section style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+    <section style="text-align:center;flex-shrink:0;">
+      <p style="margin:0;font-size:28px;font-weight:900;color:#059669;line-height:1;letter-spacing:-2px;">
+        <span leaf="">01</span>
+      </p>
+      <p style="margin:0;font-size:8px;font-weight:700;color:#D1D5DB;letter-spacing:2px;">
+        <span leaf="">PART</span>
+      </p>
+    </section>
+    <span style="width:1px;height:36px;background:#E5E7EB;flex-shrink:0;"><span leaf=""><br></span></span>
+    <section>
+      <p style="margin:0 0 1px;font-size:17px;font-weight:900;color:#111827;letter-spacing:0.3px;">
+        <span leaf="">先搞懂：trellis-meta 是什么</span>
+      </p>
+      <p style="margin:0;font-size:11px;font-weight:600;color:#9CA3AF;letter-spacing:1.5px;">
+        <span leaf="">THE HIDDEN CUSTOMIZATION TOOL</span>
+      </p>
+    </section>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">很多人用了很久 Trellis，都不知道有 </span><span style="background:#F3F4F6;color:#059669;padding:2px 6px;border-radius:4px;font-size:13px;font-weight:600;"><span leaf="">trellis-meta</span></span><span leaf=""> 这个东西。</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">它是 Trellis 自带的一个 skill，作用就一个：</span><strong style="color:#059669;"><span leaf="">帮你理解和修改 Trellis 本身的架构和工作流。</span></strong>
+  </p>
+
+  <!-- 三行能力列表 -->
+  <section style="margin-bottom:20px;">
+    <p style="margin:0 0 6px;">
+      <span style="display:inline-block;font-size:13px;font-weight:700;color:#059669;background:rgba(5,150,105,0.08);padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#059669;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">改 workflow</span></span>
+    </p>
+    <p style="font-size:13px;color:#4B5563;margin:0 0 10px;line-height:1.7;text-align:justify;">
+      <span leaf="">跟它说一声，它告诉你改哪个文件、怎么改。不用猜。</span>
+    </p>
+  </section>
+
+  <section style="margin-bottom:20px;">
+    <p style="margin:0 0 6px;">
+      <span style="display:inline-block;font-size:13px;font-weight:700;color:#059669;background:rgba(5,150,105,0.08);padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#059669;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">加自定义 agent</span></span>
+    </p>
+    <p style="font-size:13px;color:#4B5563;margin:0 0 10px;line-height:1.7;text-align:justify;">
+      <span leaf="">想加个专门做代码审查的 agent？跟它说，它告诉你怎么注册。</span>
+    </p>
+  </section>
+
+  <section style="margin-bottom:20px;">
+    <p style="margin:0 0 6px;">
+      <span style="display:inline-block;font-size:13px;font-weight:700;color:#059669;background:rgba(5,150,105,0.08);padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#059669;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">讲内部架构</span></span>
+    </p>
+    <p style="font-size:13px;color:#4B5563;margin:0 0 10px;line-height:1.7;text-align:justify;">
+      <span leaf="">想搞清楚 Trellis 内部怎么跑的？它给你讲分层架构，从 workflow 到 hook 到 task system。</span>
+    </p>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">最重要的是，它告诉你一个核心事实：</span><strong style="color:#059669;"><span leaf="">Trellis 的工作流全部定义在 .trellis/workflow.md 这一个文件里。</span></strong>
+  </p>
+
+  <!-- 四件事表格 -->
+  <section style="background:#F9FAFB;border-radius:12px;padding:16px;margin-bottom:20px;border:1px solid #E5E7EB;">
+    <p style="font-size:12px;font-weight:700;color:#059669;margin:0 0 12px;letter-spacing:1px;">
+      <span leaf="">✦ workflow.md 控制四件事</span>
+    </p>
+    <section style="display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;">
+      <span style="background:#059669;color:#fff;font-size:11px;font-weight:700;padding:1px 7px;border-radius:4px;flex-shrink:0;"><span leaf="">01</span></span>
+      <p style="font-size:13px;color:#374151;margin:0;line-height:1.6;">
+        <strong style="color:#111827;"><span leaf="">Phase 定义</span></strong>
+        <span style="color:#6B7280;"><span leaf=""> — Plan/Execute/Finish 三个阶段里有哪些步骤</span></span>
+      </p>
+    </section>
+    <section style="display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;">
+      <span style="background:#059669;color:#fff;font-size:11px;font-weight:700;padding:1px 7px;border-radius:4px;flex-shrink:0;"><span leaf="">02</span></span>
+      <p style="font-size:13px;color:#374151;margin:0;line-height:1.6;">
+        <strong style="color:#111827;"><span leaf="">Skill Routing 表</span></strong>
+        <span style="color:#6B7280;"><span leaf=""> — 用户说什么话，自动加载哪个 skill</span></span>
+      </p>
+    </section>
+    <section style="display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;">
+      <span style="background:#059669;color:#fff;font-size:11px;font-weight:700;padding:1px 7px;border-radius:4px;flex-shrink:0;"><span leaf="">03</span></span>
+      <p style="font-size:13px;color:#374151;margin:0;line-height:1.6;">
+        <strong style="color:#111827;"><span leaf="">workflow-state 块</span></strong>
+        <span style="color:#6B7280;"><span leaf=""> — 每轮注入的面包屑提示，告诉 AI 当前状态</span></span>
+      </p>
+    </section>
+    <section style="display:flex;align-items:flex-start;gap:10px;">
+      <span style="background:#059669;color:#fff;font-size:11px;font-weight:700;padding:1px 7px;border-radius:4px;flex-shrink:0;"><span leaf="">04</span></span>
+      <p style="font-size:13px;color:#374151;margin:0;line-height:1.6;">
+        <strong style="color:#111827;"><span leaf="">Task System</span></strong>
+        <span style="color:#6B7280;"><span leaf=""> — task.py 的命令目录</span></span>
+      </p>
+    </section>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">全是纯文本，改完立刻生效。不需要重新安装，不需要改 Python 脚本，不需要 re-init。</span>
+  </p>
+
+  <section style="background:#FFF;border:1px dashed #BBF7D0;border-radius:8px;padding:14px 16px;margin-bottom:8px;text-align:center;">
+    <p style="margin:0;line-height:1.6;">
+      <span style="font-size:15px;color:#059669;font-weight:bold;border-bottom:3px solid #FDE68A;padding-bottom:2px;"><span leaf="">大项目定制 workflow，本质就是改这一个文件</span></span>
+    </p>
+  </section>
+</section>
+
+<!-- ========================================== -->
+<!-- PART 02：五层防御 -->
+<!-- ========================================== -->
+<section style="margin-top:48px;margin-bottom:32px;padding:0 20px;">
+  <section style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+    <section style="text-align:center;flex-shrink:0;">
+      <p style="margin:0;font-size:28px;font-weight:900;color:#059669;line-height:1;letter-spacing:-2px;">
+        <span leaf="">02</span>
+      </p>
+      <p style="margin:0;font-size:8px;font-weight:700;color:#D1D5DB;letter-spacing:2px;">
+        <span leaf="">PART</span>
+      </p>
+    </section>
+    <span style="width:1px;height:36px;background:#E5E7EB;flex-shrink:0;"><span leaf=""><br></span></span>
+    <section>
+      <p style="margin:0 0 1px;font-size:17px;font-weight:900;color:#111827;letter-spacing:0.3px;">
+        <span leaf="">大需求长期任务：五层防御</span>
+      </p>
+      <p style="margin:0;font-size:11px;font-weight:600;color:#9CA3AF;letter-spacing:1.5px;">
+        <span leaf="">FIVE-LAYER DEFENSE SYSTEM</span>
+      </p>
+    </section>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">这是本文的重点。默认 Trellis 跑大项目为什么容易翻车？因为 Plan 阶段太浅了——brainstorm 一下就开干，等于裸奔。</span>
+  </p>
+  <p style="margin-bottom:24px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">我给大任务加了五层防御，层层递进。</span>
+  </p>
+
+  <!-- 第一层：意图澄清 -->
+  <p style="font-size:15px;font-weight:900;color:#111827;margin-bottom:16px;margin-top:28px;">
+    <span style="background:linear-gradient(180deg,transparent 65%,#FDE68A 65%);padding:0 4px;"><span leaf="">第一层：意图澄清——用第一性原理找到根问题</span></span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">人跟 AI 说需求，说不全是常态。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">你说"做个邀请系统"，心里想的是"微信分享 + 邀请码 + 多级返佣 + 排行榜"，但 AI 听到的就是"邀请系统"四个字。等它做完了，你发现怎么跟你想的不一样——它只做了最基本的邀请功能。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">这不是 AI 的锅，是你没说清。但更深一层的问题是：</span><strong style="color:#059669;"><span leaf="">你自己可能也没想清楚。</span></strong>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">第一层防御是 </span><span style="background:#F3F4F6;color:#059669;padding:2px 6px;border-radius:4px;font-size:13px;font-weight:600;"><span leaf="">anti-overfit-collaboration</span></span><span leaf="">，但它不只是"问清楚需求"这么简单。它用的是</span><strong style="color:#059669;"><span leaf="">第一性原理拆解</span></strong><span leaf="">：</span>
+  </p>
+
+  <section style="background:#F0FDF4;padding:12px 16px;border-radius:8px;border:1px solid #BBF7D0;margin-bottom:20px;">
+    <p style="font-size:13px;color:#059669;font-weight:700;margin:0 0 8px;">
+      <span leaf="">第一性原理拆解三步法</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 6px;line-height:1.8;">
+      <strong style="color:#111827;"><span leaf="">1. 剥离表象，找到根问题</span></strong>
+    </p>
+    <p style="font-size:13px;color:#4B5563;margin:0 0 10px;line-height:1.7;text-align:justify;padding-left:16px;">
+      <span leaf="">用户说的"邀请系统"是解决方案，不是问题本身。把手段剥掉，问：用户真正想解决的是什么？是拉新？是裂变？还是提高留存？</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 6px;line-height:1.8;">
+      <strong style="color:#111827;"><span leaf="">2. 还原基本要素</span></strong>
+    </p>
+    <p style="font-size:13px;color:#4B5563;margin:0 0 10px;line-height:1.7;text-align:justify;padding-left:16px;">
+      <span leaf="">把根问题拆成不可再分的基本要素——谁发起、谁参与、激励是什么、分发路径是什么、成功判据是什么。</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 6px;line-height:1.8;">
+      <strong style="color:#111827;"><span leaf="">3. 从要素重建解法</span></strong>
+    </p>
+    <p style="font-size:13px;color:#4B5563;margin:0;line-height:1.7;text-align:justify;padding-left:16px;">
+      <span leaf="">不基于"邀请系统"这个既有方案，而是从基本要素出发，重新推导可能的解法路径。</span>
+    </p>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">你以为你要的是邀请系统，但第一性原理拆完可能发现——你真正要的是"用户自发传播机制"，邀请码只是其中一种实现方式。</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">怎么拆？用</span><strong style="color:#059669;"><span leaf="">苏格拉底提问</span></strong><span leaf="">。不是"你还有什么要补充的吗"这种客气话，是一针见血的追问：</span>
+  </p>
+
+  <section style="background:#F9FAFB;border:1px dashed #D1D5DB;border-radius:8px;padding:12px 16px;margin-bottom:20px;text-align:justify;">
+    <p style="font-size:13px;color:#374151;margin:0 0 4px;line-height:1.8;">
+      <span style="color:#059669;font-weight:700;"><span leaf="">澄清型：</span></span><span leaf="">"你说的'邀请'具体指什么场景？能不能举一个你遇到的真实例子？"</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 4px;line-height:1.8;">
+      <span style="color:#059669;font-weight:700;"><span leaf="">假设型：</span></span><span leaf="">"你假设邀请了就会来，这个假设成立吗？如果用户邀请了但对方不点呢？"</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 4px;line-height:1.8;">
+      <span style="color:#059669;font-weight:700;"><span leaf="">原因型：</span></span><span leaf="">"为什么你觉得邀请系统是关键？是什么让你得出这个结论？"</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 4px;line-height:1.8;">
+      <span style="color:#059669;font-weight:700;"><span leaf="">视角型：</span></span><span leaf="">"如果站在被邀请的人角度，他为什么要点这个链接？"</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 4px;line-height:1.8;">
+      <span style="color:#059669;font-weight:700;"><span leaf="">推论型：</span></span><span leaf="">"如果按这个方向走，邀请来了之后呢？再下一步呢？"</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0;line-height:1.8;">
+      <span style="color:#059669;font-weight:700;"><span leaf="">反思型：</span></span><span leaf="">"我们是不是在讨论真正的问题？有没有可能我们问错了问题？"</span>
+    </p>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">一次只问一两个，问到根上。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">这一层的产出不是代码，是 </span><span style="background:#F3F4F6;color:#059669;padding:2px 6px;border-radius:4px;font-size:13px;font-weight:600;"><span leaf="">prd.md</span></span><span leaf=""> 开头的一段"真实意图 + 根问题"。把模糊的需求钉死在文字上。</span>
+  </p>
+
+  <p style="font-size:14px;margin-bottom:20px;text-align:center;color:#059669;font-weight:700;letter-spacing:1px;border-top:1px solid #F3F4F6;border-bottom:1px solid #F3F4F6;padding:12px 0;">
+    <span leaf="">别小看这一步。很多项目做到一半跑偏，根源就在这里——最开始就没找对问题。</span>
+  </p>
+
+  <!-- 第二层：路线锁定 -->
+  <p style="font-size:15px;font-weight:900;color:#111827;margin-bottom:16px;margin-top:32px;">
+    <span style="background:linear-gradient(180deg,transparent 65%,#FDE68A 65%);padding:0 4px;"><span leaf="">第二层：路线锁定——防止做着做着方向变了</span></span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">大项目最容易出现的问题不是做不完，是做着做着方向变了。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">今天想"先做基础功能"，明天觉得"这个体验也很重要"，后天又说"这个玩法也得加上"。两周后你发现——怎么跟最开始想的完全不是一个东西了？</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">我用 </span><span style="background:#F3F4F6;color:#059669;padding:2px 6px;border-radius:4px;font-size:13px;font-weight:600;"><span leaf="">route-lock-guardian</span></span><span leaf=""> 做第二层防御。它在项目开始时产出三个文件：</span>
+  </p>
+
+  <section style="margin-bottom:16px;">
+    <p style="margin:0 0 6px;">
+      <span style="display:inline-block;font-size:13px;font-weight:700;color:#059669;background:rgba(5,150,105,0.08);padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#059669;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">route-lock.md</span></span>
+    </p>
+    <p style="font-size:13px;color:#4B5563;margin:0 0 10px;line-height:1.7;text-align:justify;">
+      <span leaf="">核心路线是什么，成功标准是什么</span>
+    </p>
+  </section>
+
+  <section style="margin-bottom:16px;">
+    <p style="margin:0 0 6px;">
+      <span style="display:inline-block;font-size:13px;font-weight:700;color:#059669;background:rgba(5,150,105,0.08);padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#059669;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">non-goals-and-killed-routes.md</span></span>
+    </p>
+    <p style="font-size:13px;color:#4B5563;margin:0 0 10px;line-height:1.7;text-align:justify;">
+      <span leaf="">明确说清楚什么不做，哪条路已经被杀死了</span>
+    </p>
+  </section>
+
+  <section style="margin-bottom:16px;">
+    <p style="margin:0 0 6px;">
+      <span style="display:inline-block;font-size:13px;font-weight:700;color:#059669;background:rgba(5,150,105,0.08);padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#059669;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">permission-matrix.md</span></span>
+    </p>
+    <p style="font-size:13px;color:#4B5563;margin:0 0 10px;line-height:1.7;text-align:justify;">
+      <span leaf="">AI 能自己拍板什么，什么必须问你</span>
+    </p>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">做完这一步，项目的边界就定死了。之后每做一个决策，都要对照路线文件——有没有偏离？是不是引入了已经杀死的路线？</span>
+  </p>
+
+  <section style="background:#FFF;border:1px dashed #BBF7D0;border-radius:8px;padding:14px 16px;margin-bottom:8px;text-align:center;">
+    <p style="margin:0;line-height:1.6;">
+      <span style="font-size:15px;color:#059669;font-weight:bold;border-bottom:3px solid #FDE68A;padding-bottom:2px;"><span leaf="">"什么不做"比"做什么"更重要</span></span>
+    </p>
+  </section>
+  <p style="font-size:12px;color:#9CA3AF;text-align:center;margin:0 0 20px;">
+    <span leaf="">大项目失控，往往不是因为原定功能没做完，是因为加了太多不在计划里的东西</span>
+  </p>
+
+  <!-- 第三层：方案挑刺 -->
+  <p style="font-size:15px;font-weight:900;color:#111827;margin-bottom:16px;margin-top:32px;">
+    <span style="background:linear-gradient(180deg,transparent 65%,#FDE68A 65%);padding:0 4px;"><span leaf="">第三层：方案挑刺——苏格拉底提问的反向应用</span></span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">意图清楚了，方向锁死了，接下来 brainstorm 出具体方案。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">但 brainstorm 出来的方案，你懂的——看起来很美，实际跑不通。边界情况没考虑，失败模式没想过，依赖关系理不清。</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">我加了一步 </span><span style="background:#F3F4F6;color:#059669;padding:2px 6px;border-radius:4px;font-size:13px;font-weight:600;"><span leaf="">grill-me</span></span><span leaf="">——专门挑刺。</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">挑刺不是乱骂，它本质上是</span><strong style="color:#059669;"><span leaf="">苏格拉底提问的反向应用</span></strong><span leaf="">。第一层用苏格拉底提问是帮用户想清楚，这一层用苏格拉底提问是帮方案找漏洞：</span>
+  </p>
+
+  <section style="background:#F9FAFB;border:1px dashed #D1D5DB;border-radius:8px;padding:12px 16px;margin-bottom:20px;text-align:justify;">
+    <p style="font-size:13px;color:#374151;margin:0 0 4px;line-height:1.8;">
+      <span style="color:#059669;font-weight:700;"><span leaf="">假设型：</span></span><span leaf="">"你假设用户会按这个流程走，如果不呢？"</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 4px;line-height:1.8;">
+      <span style="color:#059669;font-weight:700;"><span leaf="">边界型：</span></span><span leaf="">"数据量上来了，性能扛得住吗？临界点在哪？"</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 4px;line-height:1.8;">
+      <span style="color:#059669;font-weight:700;"><span leaf="">依赖型：</span></span><span leaf="">"这个第三方服务挂了怎么办？有降级方案吗？"</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 4px;line-height:1.8;">
+      <span style="color:#059669;font-weight:700;"><span leaf="">视角型：</span></span><span leaf="">"如果站在攻击者角度，这个方案有什么漏洞？"</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 4px;line-height:1.8;">
+      <span style="color:#059669;font-weight:700;"><span leaf="">推论型：</span></span><span leaf="">"如果按这个方案做下去，半年后会遇到什么问题？"</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0;line-height:1.8;">
+      <span style="color:#059669;font-weight:700;"><span leaf="">反思型：</span></span><span leaf="">"我们是不是在解决错误的问题？有没有更简单的办法？"</span>
+    </p>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">一个问题一个问题过，每个问题都要回答。答不上来的，回去改方案。</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">更狠的是</span><strong style="color:#059669;"><span leaf="">自我苏格拉底提问</span></strong><span leaf="">——在方案出街之前，AI 先自己拷问自己一遍：</span>
+  </p>
+
+  <section style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:12px;padding:12px 16px;margin-bottom:20px;">
+    <p style="font-size:13px;color:#92400E;margin:0 0 2px;line-height:1.8;">
+      <span leaf="">1. 我回答的是真正的问题，还是我理解的那个容易回答的问题？</span>
+    </p>
+    <p style="font-size:13px;color:#92400E;margin:0 0 2px;line-height:1.8;">
+      <span leaf="">2. 我有没有偷偷替换了问题的边界？（把难做的换成好做的）</span>
+    </p>
+    <p style="font-size:13px;color:#92400E;margin:0 0 2px;line-height:1.8;">
+      <span leaf="">3. 我的结论建立在什么隐含假设上？这些假设用户同意吗？</span>
+    </p>
+    <p style="font-size:13px;color:#92400E;margin:0 0 2px;line-height:1.8;">
+      <span leaf="">4. 有没有可能我和用户都问错了问题？</span>
+    </p>
+    <p style="font-size:13px;color:#92400E;margin:0;line-height:1.8;">
+      <span leaf="">5. 这个方案的反例是什么？在什么情况下不成立？</span>
+    </p>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">七个问题答不上来，说明方案还不够扎实，不能进入下一步。</span>
+  </p>
+
+  <p style="font-size:14px;margin-bottom:20px;text-align:center;color:#059669;font-weight:700;letter-spacing:1px;border-top:1px solid #F3F4F6;border-bottom:1px solid #F3F4F6;padding:12px 0;">
+    <span leaf="">好的方案不是想出来的，是被骂出来的</span>
+  </p>
+
+  <!-- 第四层：任务契约 -->
+  <p style="font-size:15px;font-weight:900;color:#111827;margin-bottom:16px;margin-top:32px;">
+    <span style="background:linear-gradient(180deg,transparent 65%,#FDE68A 65%);padding:0 4px;"><span leaf="">第四层：任务契约——完整薄片，不能残缺</span></span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">这一层最关键，也是我踩过最深的坑。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">你有没有过这种经历：AI 说"做完了"，你一看——功能是有了，但最核心的体验都被砍了。动画没了，异常处理没了，边缘情况没考虑。它做了一个"能用"的版本，但不是你想要的版本。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">这就是 MVP 化——AI 为了快速完成任务，自动把需求降级成了最小可用版本。</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span style="background:#F3F4F6;color:#059669;padding:2px 6px;border-radius:4px;font-size:13px;font-weight:600;"><span leaf="">trellis-task-contract</span></span><span leaf=""> 就是干这个的。它产出一份不可逃逸的任务契约，但不止是"写清楚验收标准"这么简单。它有三个核心设计：</span>
+  </p>
+
+  <p style="font-size:15px;font-weight:800;color:#111827;margin:28px 0 12px;">
+    <span style="display:inline-block;background:#FEE2E2;color:#991B1B;border-radius:5px;padding:1px 9px;margin-right:8px;font-weight:900;"><span leaf="">01</span></span>
+    <span leaf="">任务可以小，但不能残</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">很多人拆任务的方式是"先搭壳，后补逻辑"——第一天写接口定义，第二天写实现，第三天写测试。这叫</span><span style="border-bottom:2px solid #FECACA;"><span leaf="">残缺阶段</span></span><span leaf="">，每一步都不能独立运行，每一步都制造假进展。</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">正确的拆法是拆成</span><strong style="color:#059669;"><span leaf="">完整薄片</span></strong><span leaf="">：每个子任务都有完整的输入、处理、输出、接入点、测试和证据。它可能很小，但它是活的——你能跑起来，能测，能验证。</span>
+  </p>
+
+  <!-- 对比表格 -->
+  <section style="background:#F9FAFB;padding:16px;border-radius:12px;border:1px solid #F3F4F6;margin-bottom:20px;">
+    <p style="font-size:12px;font-weight:700;color:#9CA3AF;margin:0 0 10px;text-align:center;letter-spacing:1px;">
+      <span leaf="">残缺阶段 VS 完整薄片</span>
+    </p>
+    <section style="display:flex;align-items:stretch;justify-content:center;gap:6px;">
+      <section style="flex:1;text-align:center;padding:10px 8px;background:#fff;border:1px solid #FECACA;border-radius:8px;">
+        <p style="font-size:13px;font-weight:800;color:#991B1B;margin:0 0 3px;">
+          <span leaf="">❌ 残缺阶段</span>
+        </p>
+        <p style="font-size:11px;color:#9CA3AF;margin:0;line-height:1.6;">
+          <span leaf="">搭接口定义<br>写业务逻辑<br>补测试<br>三个都做完才能跑</span>
+        </p>
+      </section>
+      <section style="display:flex;align-items:center;color:#D1D5DB;font-size:14px;padding:0 4px;">
+        <span leaf="">→</span>
+      </section>
+      <section style="flex:1;text-align:center;padding:10px 8px;background:linear-gradient(135deg,#059669,#10B981);border-radius:8px;">
+        <p style="font-size:13px;font-weight:800;color:#fff;margin:0 0 3px;">
+          <span leaf="">✅ 完整薄片</span>
+        </p>
+        <p style="font-size:11px;color:rgba(255,255,255,0.8);margin:0;line-height:1.6;">
+          <span leaf="">用户注册（全）<br>用户登录（全）<br>忘记密码（全）<br>每个做完都能跑</span>
+        </p>
+      </section>
+    </section>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">完整薄片的好处是：每个任务完成了就是真的完成了，不会"差不多做完了"然后发现还差一半。</span>
+  </p>
+
+  <p style="font-size:15px;font-weight:800;color:#111827;margin:28px 0 12px;">
+    <span style="display:inline-block;background:#FEE2E2;color:#991B1B;border-radius:5px;padding:1px 9px;margin-right:8px;font-weight:900;"><span leaf="">02</span></span>
+    <span leaf="">测试不是可选的，是契约的一部分</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">很多任务契约里写"需要有测试"，三个字就完了。但"有测试"和"测试有用"是两回事。</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">trellis-task-contract 的测试契约写清楚三件事：</span>
+  </p>
+
+  <section style="margin-bottom:16px;">
+    <p style="margin:0 0 6px;">
+      <span style="display:inline-block;font-size:13px;font-weight:700;color:#059669;background:rgba(5,150,105,0.08);padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#059669;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">单测覆盖什么</span></span>
+    </p>
+    <p style="font-size:13px;color:#4B5563;margin:0 0 10px;line-height:1.7;text-align:justify;padding-left:16px;">
+      <span leaf="">核心逻辑、边界条件、异常路径</span>
+    </p>
+  </section>
+
+  <section style="margin-bottom:16px;">
+    <p style="margin:0 0 6px;">
+      <span style="display:inline-block;font-size:13px;font-weight:700;color:#059669;background:rgba(5,150,105,0.08);padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#059669;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">集成测试覆盖什么</span></span>
+    </p>
+    <p style="font-size:13px;color:#4B5563;margin:0 0 10px;line-height:1.7;text-align:justify;padding-left:16px;">
+      <span leaf="">模块交互、调用链、端到端流程</span>
+    </p>
+  </section>
+
+  <section style="margin-bottom:16px;">
+    <p style="margin:0 0 6px;">
+      <span style="display:inline-block;font-size:13px;font-weight:700;color:#059669;background:rgba(5,150,105,0.08);padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#059669;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">不测什么，为什么</span></span>
+    </p>
+    <p style="font-size:13px;color:#4B5563;margin:0 0 10px;line-height:1.7;text-align:justify;padding-left:16px;">
+      <span leaf="">明确测试边界，不是测越多越好</span>
+    </p>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">而且还要过</span><strong style="color:#059669;"><span leaf="">测试审查</span></strong><span leaf="">——还是用苏格拉底提问拷问测试方案：</span>
+  </p>
+
+  <section style="background:#F9FAFB;border:1px dashed #D1D5DB;border-radius:8px;padding:12px 16px;margin-bottom:20px;text-align:justify;">
+    <p style="font-size:13px;color:#374151;margin:0 0 4px;line-height:1.8;">
+      <span leaf="">• 这个测试真的验证了逻辑，还是只验证了"函数能跑通"？</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 4px;line-height:1.8;">
+      <span leaf="">• 如果核心逻辑写错了，这个测试能发现吗？还是照样绿？</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 4px;line-height:1.8;">
+      <span leaf="">• 只测单个函数有意义吗？模块拼起来会不会炸？</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0;line-height:1.8;">
+      <span leaf="">• 这个测试通过了，能说明功能真的可用吗？</span>
+    </p>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">答不上来的，打回去重写，不准进入实现。</span>
+  </p>
+
+  <p style="font-size:15px;font-weight:800;color:#111827;margin:28px 0 12px;">
+    <span style="display:inline-block;background:#FEE2E2;color:#991B1B;border-radius:5px;padding:1px 9px;margin-right:8px;font-weight:900;"><span leaf="">03</span></span>
+    <span leaf="">中间 checkpoint 回填证据</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">长任务不能等最后才验收。必须设计中间 checkpoint，每个 checkpoint 都要回填证据：</span>
+  </p>
+
+  <section style="background:#F0FDF4;padding:12px 16px;border-radius:8px;border:1px solid #BBF7D0;margin-bottom:20px;">
+    <p style="font-size:13px;color:#059669;font-weight:700;margin:0 0 4px;line-height:1.8;">
+      <span leaf="">每个 checkpoint 都要回填：</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 2px;line-height:1.8;padding-left:12px;">
+      <span leaf="">• 改了哪些文件</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 2px;line-height:1.8;padding-left:12px;">
+      <span leaf="">• 加了哪些测试</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 2px;line-height:1.8;padding-left:12px;">
+      <span leaf="">• 跑了什么命令</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 2px;line-height:1.8;padding-left:12px;">
+      <span leaf="">• 结果是什么</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0;line-height:1.8;padding-left:12px;">
+      <span leaf="">• 还有什么没覆盖</span>
+    </p>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">每个 checkpoint 都是一个小验收。这样你就不会等到最后才发现——前面全是假进展。</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">这三个设计合在一起，再加上禁止降级项、反偷懒验收、证据计划，才构成一份完整的任务契约。AI 想蒙混过关？先过了契约这一关再说。</span>
+  </p>
+
+  <!-- 第五层：测试先行 -->
+  <p style="font-size:15px;font-weight:900;color:#111827;margin-bottom:16px;margin-top:32px;">
+    <span style="background:linear-gradient(180deg,transparent 65%,#FDE68A 65%);padding:0 4px;"><span leaf="">第五层：测试先行——先想清楚"怎么验证"</span></span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">最后一步，</span><span style="background:#F3F4F6;color:#059669;padding:2px 6px;border-radius:4px;font-size:13px;font-weight:600;"><span leaf="">TDD</span></span><span leaf=""> 确认测试边界。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">每个任务要测什么？seam 在哪？怎么证明做对了？</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">不是说先写测试就一定好，是先想清楚"怎么验证"，才能确保做出来的东西是你想要的。如果一个功能不知道怎么测，那它大概率也不知道怎么实现。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">TDD 在这里的角色不是"为了测试而测试"，是</span><strong style="color:#059669;"><span leaf="">用测试来定义"做对了"是什么</span></strong><span leaf="">。在写第一行代码之前，先把验收标准想清楚。</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">怎么想清楚？还是</span><strong style="color:#059669;"><span leaf="">苏格拉底提问</span></strong><span leaf="">——对测试方案自己拷问自己：</span>
+  </p>
+
+  <section style="background:#F9FAFB;border:1px dashed #D1D5DB;border-radius:8px;padding:12px 16px;margin-bottom:20px;text-align:justify;">
+    <p style="font-size:13px;color:#374151;margin:0 0 4px;line-height:1.8;">
+      <span leaf="">• 这个测试真的验证了核心逻辑，还是只验证了"函数能跑通"？</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 4px;line-height:1.8;">
+      <span leaf="">• 如果核心逻辑写错了，这个测试能发现吗？还是照样绿？</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 4px;line-height:1.8;">
+      <span leaf="">• 边界条件、失败路径、异常输入，都覆盖了吗？</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 4px;line-height:1.8;">
+      <span leaf="">• 只测单个函数有意义吗？模块拼起来会不会炸？</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 4px;line-height:1.8;">
+      <span leaf="">• 这个测试通过了，能说明功能真的可用吗？</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0;line-height:1.8;">
+      <span leaf="">• 我有没有在测试我想测的东西，还是在测试容易测的东西？</span>
+    </p>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">答不上来的，说明测试方案还不够扎实，回去重想。</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">到这里，Plan 阶段才算完。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">你数一下——默认 Trellis 的 Plan 只有 brainstorm 一步，我加到了五层。不是我喜欢复杂，是大项目裸奔的代价太大了。</span>
+  </p>
+
+  <section style="background:#FFF;border:1px dashed #BBF7D0;border-radius:8px;padding:14px 16px;margin-bottom:8px;text-align:center;">
+    <p style="margin:0;line-height:1.6;">
+      <span style="font-size:15px;color:#059669;font-weight:bold;border-bottom:3px solid #FDE68A;padding-bottom:2px;"><span leaf="">多花半小时在 Plan 阶段，能省三天的返工</span></span>
+    </p>
+  </section>
+</section>
+
+<!-- ========================================== -->
+<!-- PART 03：并行执行 -->
+<!-- ========================================== -->
+<section style="margin-top:48px;margin-bottom:32px;padding:0 20px;">
+  <section style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+    <section style="text-align:center;flex-shrink:0;">
+      <p style="margin:0;font-size:28px;font-weight:900;color:#059669;line-height:1;letter-spacing:-2px;">
+        <span leaf="">03</span>
+      </p>
+      <p style="margin:0;font-size:8px;font-weight:700;color:#D1D5DB;letter-spacing:2px;">
+        <span leaf="">PART</span>
+      </p>
+    </section>
+    <span style="width:1px;height:36px;background:#E5E7EB;flex-shrink:0;"><span leaf=""><br></span></span>
+    <section>
+      <p style="margin:0 0 1px;font-size:17px;font-weight:900;color:#111827;letter-spacing:0.3px;">
+        <span leaf="">执行阶段：worktree 三批次并行</span>
+      </p>
+      <p style="margin:0;font-size:11px;font-weight:600;color:#9CA3AF;letter-spacing:1.5px;">
+        <span leaf="">PARALLEL EXECUTION</span>
+      </p>
+    </section>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">方案定了，任务拆了，就到执行了。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">大需求的执行跟小任务不一样——很多任务可以同时做。你总不能让 AI 一个一个串行做，那跟自己写有什么区别？</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">我用的是 </span><strong style="color:#059669;"><span leaf="">git worktree + Codex Goal</span></strong><span leaf=""> 的方式，分三个批次：</span>
+  </p>
+
+  <!-- 三批次流程卡片 -->
+  <section style="background:#F9FAFB;padding:16px;border-radius:12px;border:1px solid #F3F4F6;margin-bottom:24px;">
+    <section style="display:flex;align-items:stretch;justify-content:center;gap:6px;margin-bottom:10px;">
+      <section style="flex:1;text-align:center;padding:10px 8px;background:linear-gradient(135deg,#059669,#10B981);border-radius:8px;">
+        <p style="font-size:13px;font-weight:800;color:#fff;margin:0 0 3px;">
+          <span leaf="">Batch 1</span>
+        </p>
+        <p style="font-size:10px;color:rgba(255,255,255,0.8);margin:0;line-height:1.5;">
+          <span leaf="">基础设施<br>单会话串行</span>
+        </p>
+      </section>
+      <section style="display:flex;align-items:center;color:#D1D5DB;font-size:14px;padding:0 4px;">
+        <span leaf="">→</span>
+      </section>
+      <section style="flex:1;text-align:center;padding:10px 8px;background:#fff;border:1px solid #E5E7EB;border-radius:8px;">
+        <p style="font-size:13px;font-weight:800;color:#111827;margin:0 0 3px;">
+          <span leaf="">Batch 2</span>
+        </p>
+        <p style="font-size:10px;color:#9CA3AF;margin:0;line-height:1.5;">
+          <span leaf="">并行任务<br>worktree 多会话</span>
+        </p>
+      </section>
+      <section style="display:flex;align-items:center;color:#D1D5DB;font-size:14px;padding:0 4px;">
+        <span leaf="">→</span>
+      </section>
+      <section style="flex:1;text-align:center;padding:10px 8px;background:#fff;border:1px solid #A7F3D0;border-radius:8px;">
+        <p style="font-size:13px;font-weight:800;color:#059669;margin:0 0 3px;">
+          <span leaf="">Batch 3</span>
+        </p>
+        <p style="font-size:10px;color:#9CA3AF;margin:0;line-height:1.5;">
+          <span leaf="">集成验证<br>单会话收尾</span>
+        </p>
+      </section>
+    </section>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <strong style="color:#059669;"><span leaf="">Batch 1 基础设施</span></strong><span leaf="">：单会话串行做。因为大家都依赖它，它不做完，后面的都没法开始。</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <strong style="color:#059669;"><span leaf="">Batch 2 并行任务</span></strong><span leaf="">：每个任务一个 worktree，开一个独立会话，各自跑自己的 Trellis task。每个 worktree 有自己的 git 分支、自己的 active-task 指针、自己的实现。互不干扰，错了就回退各自的分支。</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <strong style="color:#059669;"><span leaf="">Batch 3 集成</span></strong><span leaf="">：全部合进来，做集成测试和最终验证。</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">并行执行的关键不是技术，是</span><strong style="color:#059669;"><span leaf="">拆分</span></strong><span leaf="">。每个并行任务必须有独立的测试边界，不能依赖另一个并行任务的产出。Batch 1 做完了，Batch 2 的每个任务拿到的接口都是现成可测的。</span>
+  </p>
+
+  <section style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:12px;padding:12px 16px;margin-bottom:8px;">
+    <p style="font-size:13px;color:#92400E;margin:0;font-weight:700;">
+      <span leaf="">⚠️ 踩坑提示</span>
+    </p>
+    <p style="font-size:13px;color:#92400E;margin:6px 0 0;line-height:1.7;">
+      <span leaf="">拆得好，并行就是线性加速。拆不好，全是合并冲突，反而更慢。</span>
+    </p>
+  </section>
+</section>
+
+<!-- ========================================== -->
+<!-- PART 04：另外两个场景 -->
+<!-- ========================================== -->
+<section style="margin-top:48px;margin-bottom:32px;padding:0 20px;">
+  <section style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+    <section style="text-align:center;flex-shrink:0;">
+      <p style="margin:0;font-size:28px;font-weight:900;color:#059669;line-height:1;letter-spacing:-2px;">
+        <span leaf="">04</span>
+      </p>
+      <p style="margin:0;font-size:8px;font-weight:700;color:#D1D5DB;letter-spacing:2px;">
+        <span leaf="">PART</span>
+      </p>
+    </section>
+    <span style="width:1px;height:36px;background:#E5E7EB;flex-shrink:0;"><span leaf=""><br></span></span>
+    <section>
+      <p style="margin:0 0 1px;font-size:17px;font-weight:900;color:#111827;letter-spacing:0.3px;">
+        <span leaf="">另外两个场景：顺带一提</span>
+      </p>
+      <p style="margin:0;font-size:11px;font-weight:600;color:#9CA3AF;letter-spacing:1.5px;">
+        <span leaf="">BUGFIX + PERFORMANCE</span>
+      </p>
+    </section>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">大需求是重头戏，但日常工作里 bugfix 和性能优化也不少。简单说一下这两个场景怎么改。</span>
+  </p>
+
+  <!-- Bugfix -->
+  <p style="font-size:15px;font-weight:900;color:#111827;margin-bottom:16px;margin-top:28px;">
+    <span style="background:linear-gradient(180deg,transparent 65%,#FDE68A 65%);padding:0 4px;"><span leaf="">Bugfix：先诊断，再修</span></span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">很多人修 bug 的方式是：把报错贴给 AI，AI 改代码，测试通过，搞定。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">但过两天同样的 bug 又冒出来了。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">为什么？因为 AI 改的是症状，不是根因。</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">我给 bugfix 场景加了 </span><span style="background:#F3F4F6;color:#059669;padding:2px 6px;border-radius:4px;font-size:13px;font-weight:600;"><span leaf="">diagnosing-bugs</span></span><span leaf="">，强制走科学调试流程：</span>
+  </p>
+
+  <section style="background:#F0FDF4;padding:12px 16px;border-radius:8px;border:1px solid #BBF7D0;margin-bottom:20px;">
+    <p style="font-size:13px;color:#059669;font-weight:700;margin:0 0 6px;">
+      <span leaf="">科学调试六步法（前四步不许改代码）</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 2px;line-height:1.8;padding-left:12px;">
+      <span leaf="">1. 构建反馈回路——找到一个能让 bug 变红的方法</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 2px;line-height:1.8;padding-left:12px;">
+      <span leaf="">2. 复现并最小化——用最小的输入复现 bug</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 2px;line-height:1.8;padding-left:12px;">
+      <span leaf="">3. 生成 3-5 个可证伪假设</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 2px;line-height:1.8;padding-left:12px;">
+      <span leaf="">4. 逐变量插桩验证——一个一个排除</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0 0 2px;line-height:1.8;padding-left:12px;">
+      <span leaf="">5. 修复 + 回归测试</span>
+    </p>
+    <p style="font-size:13px;color:#374151;margin:0;line-height:1.8;padding-left:12px;">
+      <span leaf="">6. 清理 + 事后复盘</span>
+    </p>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">找到根因之后，先写一个</span><strong style="color:#059669;"><span leaf="">能复现 bug 的失败测试</span></strong><span leaf="">，再修。修完这个测试永远留在测试套件里，防止以后再回来。</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">最后用 </span><span style="background:#F3F4F6;color:#059669;padding:2px 6px;border-radius:4px;font-size:13px;font-weight:600;"><span leaf="">trellis-break-loop</span></span><span leaf=""> 做根因分析——为什么会发生？怎么防止再发生？</span>
+  </p>
+
+  <p style="font-size:14px;margin-bottom:20px;text-align:center;color:#059669;font-weight:700;letter-spacing:1px;border-top:1px solid #F3F4F6;border-bottom:1px solid #F3F4F6;padding:12px 0;">
+    <span leaf="">一次 bug 是教训，两次同样的 bug 是事故</span>
+  </p>
+
+  <!-- 性能优化 -->
+  <p style="font-size:15px;font-weight:900;color:#111827;margin-bottom:16px;margin-top:32px;">
+    <span style="background:linear-gradient(180deg,transparent 65%,#FDE68A 65%);padding:0 4px;"><span leaf="">性能优化：先测，再动</span></span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">性能优化最容易出两个问题：优化了错误的地方，或者没有 baseline 全靠体感。</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">我给性能优化场景的改法是：</span>
+  </p>
+
+  <section style="margin-bottom:20px;">
+    <p style="margin:0 0 6px;">
+      <span style="display:inline-block;font-size:13px;font-weight:700;color:#059669;background:rgba(5,150,105,0.08);padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#059669;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">第一步：先 profiling</span></span>
+    </p>
+    <p style="font-size:13px;color:#4B5563;margin:0 0 10px;line-height:1.7;text-align:justify;padding-left:16px;">
+      <span leaf="">前端用 Lighthouse，Android 用 Perfetto + hprof。数据出来了瓶颈在哪一目了然。不要猜。</span>
+    </p>
+  </section>
+
+  <section style="margin-bottom:20px;">
+    <p style="margin:0 0 6px;">
+      <span style="display:inline-block;font-size:13px;font-weight:700;color:#059669;background:rgba(5,150,105,0.08);padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#059669;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">第二步：先质疑方向</span></span>
+    </p>
+    <p style="font-size:13px;color:#4B5563;margin:0 0 10px;line-height:1.7;text-align:justify;padding-left:16px;">
+      <span leaf="">这真的是瓶颈吗？优化收益有多大？值不值得花时间？用 grill-me 挑一挑刺。很多时候挑完发现根本不值得做。</span>
+    </p>
+  </section>
+
+  <section style="margin-bottom:20px;">
+    <p style="margin:0 0 6px;">
+      <span style="display:inline-block;font-size:13px;font-weight:700;color:#059669;background:rgba(5,150,105,0.08);padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#059669;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">第三步：建 baseline</span></span>
+    </p>
+    <p style="font-size:13px;color:#4B5563;margin:0 0 10px;line-height:1.7;text-align:justify;padding-left:16px;">
+      <span leaf="">行为 baseline（测试全绿吗？）+ 性能 baseline（当前数据是多少？）。优化前没有 baseline，优化后你根本不知道有没有效果。</span>
+    </p>
+  </section>
+
+  <section style="margin-bottom:20px;">
+    <p style="margin:0 0 6px;">
+      <span style="display:inline-block;font-size:13px;font-weight:700;color:#059669;background:rgba(5,150,105,0.08);padding:3px 10px;border-radius:999px;"><span style="display:inline-block;width:6px;height:6px;background:#059669;border-radius:50%;margin-right:5px;vertical-align:middle;"><span leaf=""><br></span></span><span leaf="">第四步：优化，对比数据</span></span>
+    </p>
+    <p style="font-size:13px;color:#4B5563;margin:0 0 10px;line-height:1.7;text-align:justify;padding-left:16px;">
+      <span leaf="">每优化一步跑一次 benchmark。优化了半天提升 5%？那不如不做。</span>
+    </p>
+  </section>
+
+  <section style="background:#FFF;border:1px dashed #BBF7D0;border-radius:8px;padding:14px 16px;margin-bottom:8px;text-align:center;">
+    <p style="margin:0;line-height:1.6;">
+      <span style="font-size:15px;color:#059669;font-weight:bold;border-bottom:3px solid #FDE68A;padding-bottom:2px;"><span leaf="">没有 profiling 数据的性能优化，都是瞎优化</span></span>
+    </p>
+  </section>
+</section>
+
+<!-- ========================================== -->
+<!-- PART 05：三种场景对照表 + 三步上手 -->
+<!-- ========================================== -->
+<section style="margin-top:48px;margin-bottom:32px;padding:0 20px;">
+  <section style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+    <section style="text-align:center;flex-shrink:0;">
+      <p style="margin:0;font-size:28px;font-weight:900;color:#059669;line-height:1;letter-spacing:-2px;">
+        <span leaf="">05</span>
+      </p>
+      <p style="margin:0;font-size:8px;font-weight:700;color:#D1D5DB;letter-spacing:2px;">
+        <span leaf="">PART</span>
+      </p>
+    </section>
+    <span style="width:1px;height:36px;background:#E5E7EB;flex-shrink:0;"><span leaf=""><br></span></span>
+    <section>
+      <p style="margin:0 0 1px;font-size:17px;font-weight:900;color:#111827;letter-spacing:0.3px;">
+        <span leaf="">一张表看明白 + 三步上手</span>
+      </p>
+      <p style="margin:0;font-size:11px;font-weight:600;color:#9CA3AF;letter-spacing:1.5px;">
+        <span leaf="">COMPARISON + GET STARTED</span>
+      </p>
+    </section>
+  </section>
+
+  <!-- 对照表 -->
+  <section style="background:#F9FAFB;padding:16px;border-radius:12px;border:1px solid #F3F4F6;margin-bottom:24px;overflow-x:auto;">
+    <p style="font-size:12px;font-weight:700;color:#059669;margin:0 0 12px;text-align:center;letter-spacing:1px;">
+      <span leaf="">✦ 三种场景对照表</span>
+    </p>
+    <section style="font-size:12px;line-height:1.6;">
+      <section style="display:flex;border-bottom:1px solid #E5E7EB;padding-bottom:6px;margin-bottom:6px;">
+        <span style="flex:0 0 90px;color:#9CA3AF;font-weight:600;"><span leaf="">维度</span></span>
+        <span style="flex:1;color:#059669;font-weight:700;text-align:center;"><span leaf="">大需求长期</span></span>
+        <span style="flex:1;color:#6B7280;font-weight:700;text-align:center;"><span leaf="">Bugfix</span></span>
+        <span style="flex:1;color:#6B7280;font-weight:700;text-align:center;"><span leaf="">性能优化</span></span>
+      </section>
+      <section style="display:flex;border-bottom:1px dashed #E5E7EB;padding-bottom:6px;margin-bottom:6px;">
+        <span style="flex:0 0 90px;color:#9CA3AF;"><span leaf="">Plan 核心</span></span>
+        <span style="flex:1;color:#374151;text-align:center;font-size:11px;"><span leaf="">五层防御</span></span>
+        <span style="flex:1;color:#374151;text-align:center;font-size:11px;"><span leaf="">科学诊断</span></span>
+        <span style="flex:1;color:#374151;text-align:center;font-size:11px;"><span leaf="">profiling + baseline</span></span>
+      </section>
+      <section style="display:flex;border-bottom:1px dashed #E5E7EB;padding-bottom:6px;margin-bottom:6px;">
+        <span style="flex:0 0 90px;color:#9CA3AF;"><span leaf="">核心方法论</span></span>
+        <span style="flex:1;color:#059669;text-align:center;font-size:11px;font-weight:600;"><span leaf="">苏格拉底提问</span></span>
+        <span style="flex:1;color:#374151;text-align:center;font-size:11px;"><span leaf="">科学调试法</span></span>
+        <span style="flex:1;color:#374151;text-align:center;font-size:11px;"><span leaf="">数据驱动</span></span>
+      </section>
+      <section style="display:flex;border-bottom:1px dashed #E5E7EB;padding-bottom:6px;margin-bottom:6px;">
+        <span style="flex:0 0 90px;color:#9CA3AF;"><span leaf="">要不要 brainstorm</span></span>
+        <span style="flex:1;color:#059669;text-align:center;font-size:11px;"><span leaf="">✅ 要</span></span>
+        <span style="flex:1;color:#374151;text-align:center;font-size:11px;"><span leaf="">❌ 不要</span></span>
+        <span style="flex:1;color:#374151;text-align:center;font-size:11px;"><span leaf="">❌ 不要</span></span>
+      </section>
+      <section style="display:flex;border-bottom:1px dashed #E5E7EB;padding-bottom:6px;margin-bottom:6px;">
+        <span style="flex:0 0 90px;color:#9CA3AF;"><span leaf="">任务拆分</span></span>
+        <span style="flex:1;color:#059669;text-align:center;font-size:11px;"><span leaf="">完整薄片</span></span>
+        <span style="flex:1;color:#374151;text-align:center;font-size:11px;"><span leaf="">单任务</span></span>
+        <span style="flex:1;color:#374151;text-align:center;font-size:11px;"><span leaf="">单任务</span></span>
+      </section>
+      <section style="display:flex;border-bottom:1px dashed #E5E7EB;padding-bottom:6px;margin-bottom:6px;">
+        <span style="flex:0 0 90px;color:#9CA3AF;"><span leaf="">测试的角色</span></span>
+        <span style="flex:1;color:#374151;text-align:center;font-size:11px;"><span leaf="">定义验收</span></span>
+        <span style="flex:1;color:#374151;text-align:center;font-size:11px;"><span leaf="">复现 bug</span></span>
+        <span style="flex:1;color:#374151;text-align:center;font-size:11px;"><span leaf="">锁定行为</span></span>
+      </section>
+      <section style="display:flex;">
+        <span style="flex:0 0 90px;color:#9CA3AF;"><span leaf="">人工介入</span></span>
+        <span style="flex:1;color:#374151;text-align:center;font-size:11px;"><span leaf="">3个</span></span>
+        <span style="flex:1;color:#374151;text-align:center;font-size:11px;"><span leaf="">1个</span></span>
+        <span style="flex:1;color:#374151;text-align:center;font-size:11px;"><span leaf="">2个</span></span>
+      </section>
+    </section>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">规律很简单：</span><strong style="color:#059669;"><span leaf="">越重的场景，加的东西越多；越轻的场景，越要跳过多余步骤。</span></strong>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">不是所有任务都要走全套流程。一个简单 bug 你也搞五层防御，那是过度工程，比不用还慢。</span>
+  </p>
+
+  <p style="font-size:14px;margin-bottom:24px;text-align:center;color:#059669;font-weight:700;letter-spacing:1px;border-top:1px solid #F3F4F6;border-bottom:1px solid #F3F4F6;padding:12px 0;">
+    <span leaf="">好的 workflow 是按需加载的，不是越多越好</span>
+  </p>
+
+  <!-- 三步上手 -->
+  <p style="font-size:15px;font-weight:900;color:#111827;margin-bottom:16px;margin-top:32px;">
+    <span style="background:linear-gradient(180deg,transparent 65%,#FDE68A 65%);padding:0 4px;"><span leaf="">你怎么开始：三步上手</span></span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">说了这么多，你可能想问：我也想定制，从哪开始？</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">很简单，三步。</span>
+  </p>
+
+  <section style="background:#F9FAFB;padding:16px;border-radius:12px;border:1px solid #F3F4F6;margin-bottom:24px;">
+    <section style="display:flex;align-items:stretch;justify-content:center;gap:6px;">
+      <section style="flex:1;text-align:center;padding:10px 8px;background:linear-gradient(135deg,#059669,#10B981);border-radius:8px;">
+        <p style="font-size:13px;font-weight:800;color:#fff;margin:0 0 3px;">
+          <span leaf="">第一步</span>
+        </p>
+        <p style="font-size:10px;color:rgba(255,255,255,0.8);margin:0;line-height:1.5;">
+          <span leaf="">调用 trellis-meta<br>看当前配置</span>
+        </p>
+      </section>
+      <section style="display:flex;align-items:center;color:#D1D5DB;font-size:14px;padding:0 4px;">
+        <span leaf="">→</span>
+      </section>
+      <section style="flex:1;text-align:center;padding:10px 8px;background:#fff;border:1px solid #E5E7EB;border-radius:8px;">
+        <p style="font-size:13px;font-weight:800;color:#111827;margin:0 0 3px;">
+          <span leaf="">第二步</span>
+        </p>
+        <p style="font-size:10px;color:#9CA3AF;margin:0;line-height:1.5;">
+          <span leaf="">从最痛的场景<br>加一个 skill 路由</span>
+        </p>
+      </section>
+      <section style="display:flex;align-items:center;color:#D1D5DB;font-size:14px;padding:0 4px;">
+        <span leaf="">→</span>
+      </section>
+      <section style="flex:1;text-align:center;padding:10px 8px;background:#fff;border:1px solid #A7F3D0;border-radius:8px;">
+        <p style="font-size:13px;font-weight:800;color:#059669;margin:0 0 3px;">
+          <span leaf="">第三步</span>
+        </p>
+        <p style="font-size:10px;color:#9CA3AF;margin:0;line-height:1.5;">
+          <span leaf="">用起来<br>边用边迭代</span>
+        </p>
+      </section>
+    </section>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <strong style="color:#059669;"><span leaf="">第一步：</span></strong><span leaf="">在 Trellis 项目里跟 AI 说"用 trellis-meta 看看我的 workflow 配置"，它会给你讲清楚当前的 Phase 定义、Skill Routing、状态管理。先搞清楚现状，再谈改。</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <strong style="color:#059669;"><span leaf="">第二步：</span></strong><span leaf="">不要一上来就改全套三个场景。从你最痛的那个开始——大项目翻车最多就先改长期任务，天天修 bug 就先改 bugfix 的。改什么？不用多，加一个 skill 路由就行。比如 bugfix 场景，在 Skill Routing 表里加一行："用户说 bug/报错 → 加载 diagnosing-bugs"。就这一行，体验立刻不一样。</span>
+  </p>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <strong style="color:#059669;"><span leaf="">第三步：</span></strong><span leaf="">改完跑几个项目看看。哪里不顺手，再调。workflow 不是一次成型的，是用出来的。你看我的五层防御，也不是一天想出来的——是翻了好几次车，一层一层加上去的。</span>
+  </p>
+</section>
+
+<!-- ========================================== -->
+<!-- 写在最后 -->
+<!-- ========================================== -->
+<section style="margin-top:48px;margin-bottom:32px;padding:0 20px;">
+  <section style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+    <section style="text-align:center;flex-shrink:0;">
+      <p style="margin:0;font-size:28px;font-weight:900;color:#059669;line-height:1;letter-spacing:-2px;">
+        <span leaf="">///</span>
+      </p>
+      <p style="margin:0;font-size:8px;font-weight:700;color:#D1D5DB;letter-spacing:2px;">
+        <span leaf="">LAST</span>
+      </p>
+    </section>
+    <span style="width:1px;height:36px;background:#E5E7EB;flex-shrink:0;"><span leaf=""><br></span></span>
+    <section>
+      <p style="margin:0 0 1px;font-size:17px;font-weight:900;color:#111827;letter-spacing:0.3px;">
+        <span leaf="">写在最后</span>
+      </p>
+      <p style="margin:0;font-size:11px;font-weight:600;color:#9CA3AF;letter-spacing:1.5px;">
+        <span leaf="">CONCLUSION</span>
+      </p>
+    </section>
+  </section>
+
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">很多人追求"全自动 AI 编程"，希望 AI 自己理解需求、自己拆任务、自己写代码、自己测试，人什么都不用管。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">我觉得这是个伪命题。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">AI 能帮你做很多事，但</span><strong style="color:#059669;"><span leaf="">关键决策必须人来做</span></strong><span leaf="">——需求的真实意图是什么？项目的边界在哪？性能优化值不值得做？这些问题 AI 答不了，只有你能答。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">好的 workflow 不是把人排除在外，是</span><strong style="color:#059669;"><span leaf="">把人的精力放在真正需要人判断的地方</span></strong><span leaf="">，把机械重复的事交给 AI。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">意图澄清需要你拍板，路线锁定需要你签字，方案挑刺需要你回答，UI 验证需要你看一眼——但中间那些拆任务、写代码、跑测试、查规范的事，全让 AI 自己去跑。</span>
+  </p>
+  <p style="margin-bottom:16px;font-size:14px;line-height:1.9;text-align:justify;">
+    <span leaf="">这才是 Trellis 真正的价值。</span>
+  </p>
+
+  <section style="background:#FFF;border:1px dashed #BBF7D0;border-radius:8px;padding:14px 16px;margin-bottom:8px;text-align:center;">
+    <p style="margin:0;line-height:1.6;">
+      <span style="font-size:15px;color:#059669;font-weight:bold;border-bottom:3px solid #FDE68A;padding-bottom:2px;"><span leaf="">它不是让 AI 替代你，是给 AI 搭好脚手架，让你专注于只有你能做的决策</span></span>
+    </p>
+  </section>
+</section>
+
+<!-- 完整版领取 + 互动 -->
+<section style="margin:0 20px 32px;background:linear-gradient(135deg,#059669,#10B981);border-radius:16px;padding:24px 20px;text-align:center;">
+  <p style="font-size:16px;font-weight:900;color:#fff;margin:0 0 8px;line-height:1.4;">
+    <span leaf="">我在用的完整版</span>
+  </p>
+  <p style="font-size:13px;color:rgba(255,255,255,0.85);margin:0 0 16px;line-height:1.7;">
+    <span leaf="">workflow.md 模板 + 5 个核心 skill</span>
+  </p>
+  <section style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:16px;">
+    <span style="background:rgba(255,255,255,0.2);padding:4px 10px;border-radius:4px;font-size:11px;color:#fff;font-weight:600;"><span leaf="">三场景动态路由</span></span>
+    <span style="background:rgba(255,255,255,0.2);padding:4px 10px;border-radius:4px;font-size:11px;color:#fff;font-weight:600;"><span leaf="">五层防御体系</span></span>
+    <span style="background:rgba(255,255,255,0.2);padding:4px 10px;border-radius:4px;font-size:11px;color:#fff;font-weight:600;"><span leaf="">完整薄片拆分</span></span>
+    <span style="background:rgba(255,255,255,0.2);padding:4px 10px;border-radius:4px;font-size:11px;color:#fff;font-weight:600;"><span leaf="">苏格拉底提问模板</span></span>
+    <span style="background:rgba(255,255,255,0.2);padding:4px 10px;border-radius:4px;font-size:11px;color:#fff;font-weight:600;"><span leaf="">反 MVP 契约</span></span>
+  </section>
+  <p style="font-size:13px;color:rgba(255,255,255,0.9);margin:0;">
+    <span leaf="">关注公众号，回复关键词 </span>
+    <span style="background:#FDE68A;color:#1F2937;padding:2px 8px;border-radius:4px;font-weight:700;"><span leaf="">workflow</span></span>
+    <span leaf=""> 全套发给你</span>
+  </p>
+</section>
+
+<!-- 作者签名 + 互动 -->
+<section style="margin:0 20px 40px;">
+  <section style="border-top:2px solid #ECFDF5;padding-top:20px;margin-bottom:16px;">
+    <p style="font-size:14px;font-weight:800;color:#059669;margin:0 0 8px;">
+      <span leaf="">💬 互动区</span>
+    </p>
+    <p style="font-size:13px;color:#4B5563;margin:0 0 4px;line-height:1.8;">
+      <span leaf="">你在用 Trellis 做什么类型的项目？</span>
+    </p>
+    <p style="font-size:13px;color:#4B5563;margin:0 0 4px;line-height:1.8;">
+      <span leaf="">有没有自己改过 workflow？</span>
+    </p>
+    <p style="font-size:13px;color:#4B5563;margin:0;line-height:1.8;">
+      <span leaf="">最痛的场景是哪个？评论区聊聊</span>
+    </p>
+  </section>
+</section>
+
+<!-- 底部三连 -->
+<section style="margin:0 20px 32px;background:#F9FAFB;border-radius:12px;padding:16px;text-align:center;border:1px solid #E5E7EB;">
+  <p style="font-size:13px;color:#6B7280;margin:0 0 10px;">
+    <span leaf="">觉得有用 👇</span>
+  </p>
+  <section style="display:flex;justify-content:center;gap:12px;">
+    <span style="background:#fff;border:1px solid #BBF7D0;padding:6px 14px;border-radius:20px;font-size:12px;color:#059669;font-weight:700;"><span leaf="">👍 点赞</span></span>
+    <span style="background:#fff;border:1px solid #BBF7D0;padding:6px 14px;border-radius:20px;font-size:12px;color:#059669;font-weight:700;"><span leaf="">💬 评论</span></span>
+    <span style="background:#fff;border:1px solid #BBF7D0;padding:6px 14px;border-radius:20px;font-size:12px;color:#059669;font-weight:700;"><span leaf="">↗️ 转发</span></span>
+  </section>
+</section>
+
+</section>
